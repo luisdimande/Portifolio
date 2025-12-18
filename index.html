@@ -1203,55 +1203,27 @@
                         <div id="formStatus" class="hidden mb-6 p-4 rounded-xl"></div>
                         
                         <!-- Formulário usando FormSubmit.co -->
-                        <form id="contactForm" action="https://formsubmit.co/luisdimande1@gmail.com" method="POST" class="space-y-8">
-                            <div class="grid md:grid-cols-2 gap-8">
-                                <div>
-                                    <label class="block text-gray-700 mb-3 font-medium text-lg">
-                                        <span data-lang="en">Name</span>
-                                        <span data-lang="pt" style="display: none;">Nome</span>
-                                    </label>
-                                    <input type="text" name="name" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg" required>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-gray-700 mb-3 font-medium text-lg">
-                                        <span data-lang="en">Email</span>
-                                        <span data-lang="pt" style="display: none;">Email</span>
-                                    </label>
-                                    <input type="email" name="email" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg" required>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-700 mb-3 font-medium text-lg">
-                                    <span data-lang="en">Subject</span>
-                                    <span data-lang="pt" style="display: none;">Assunto</span>
-                                </label>
-                                <input type="text" name="subject" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg" required>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-gray-700 mb-3 font-medium text-lg">
-                                    <span data-lang="en">Message</span>
-                                    <span data-lang="pt" style="display: none;">Mensagem</span>
-                                </label>
-                                <textarea name="message" rows="8" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg" required></textarea>
-                            </div>
-                            
-                            <!-- Campos ocultos para FormSubmit.co -->
-                            <input type="hidden" name="_subject" value="New Contact Form Submission - Luis Dimande Portfolio">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_next" value="#">
-                            
-                            <button type="submit" id="submitBtn" class="w-full py-5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-xl transition-all shadow-xl hover:shadow-2xl flex items-center justify-center text-lg">
-                                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                                </svg>
-                                <span data-lang="en">Send Message</span>
-                                <span data-lang="pt" style="display: none;">Enviar Mensagem</span>
-                            </button>
-                        </form>
+                         <form
+      action="https://formsubmit.co/luisdimande1@gmail.com"
+      method="POST"
+    >
+      <!-- CONFIGURAÇÕES -->
+      <input type="hidden" name="_subject" value="Novo contacto - Portfolio" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+
+      <!-- CAMPOS -->
+      <label>Nome</label>
+      <input type="text" name="name" required />
+
+      <label>Email</label>
+      <input type="email" name="email" required />
+
+      <label>Mensagem</label>
+      <textarea name="message" rows="6" required></textarea>
+
+      <button type="submit">Enviar mensagem</button>
+    </form>
                     </div>
                 </div>
                 
@@ -1549,7 +1521,7 @@
                 const mobileNavButtons = document.querySelectorAll('.mobile-nav-btn');
                 mobileNavButtons.forEach(btn => {
                     if (btn.getAttribute('data-section') === sectionId) {
-                        btn.classList.add('section-active');
+                        btn.classList.add('section-actiFve');
                         btn.classList.remove('text-gray-700', 'hover:text-blue-600', 'hover:bg-blue-50');
                     } else {
                         btn.classList.remove('section-active');
