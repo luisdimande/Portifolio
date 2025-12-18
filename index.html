@@ -51,7 +51,10 @@
                     </div>
                     <div class="flex flex-col">
                         <span class="text-xl font-bold text-gray-900 leading-tight">Luis Dimande</span>
-                        <span class="text-xs text-blue-600 font-medium">Senior Engineer</span>
+                        <span class="text-xs text-blue-600 font-medium">
+                            <span data-lang="en">Senior Engineer</span>
+                            <span data-lang="pt" style="display: none;">Engenheiro Sênior</span>
+                        </span>
                     </div>
                 </div>
 
@@ -289,7 +292,10 @@
                                         <span data-lang="en">Specialization</span>
                                         <span data-lang="pt" style="display: none;">Especialização</span>
                                     </p>
-                                    <p class="text-blue-200">Gas Pipeline Systems</p>
+                                    <p class="text-blue-200">
+                                        <span data-lang="en">Gas Pipeline Systems</span>
+                                        <span data-lang="pt" style="display: none;">Sistemas de Gasodutos</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -1203,26 +1209,89 @@
                         <div id="formStatus" class="hidden mb-6 p-4 rounded-xl"></div>
                         
                         <!-- Formulário usando FormSubmit.co -->
-                         <form
-      action="https://formsubmit.co/luisdimande1@gmail.com"
-      method="POST"
+                        <form 
+      id="contactForm" 
+      action="https://formsubmit.co/luisdimande1@gmail.com" 
+      method="POST" 
+      class="space-y-6"
     >
-      <!-- CONFIGURAÇÕES -->
+      <!-- Campos ocultos FormSubmit -->
       <input type="hidden" name="_subject" value="Novo contacto - Portfolio" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="#">
 
-      <!-- CAMPOS -->
-      <label>Nome</label>
-      <input type="text" name="name" required />
+      <!-- Nome e Email -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-700 mb-2 font-medium">
+            <span data-lang="en">Name</span>
+            <span data-lang="pt" style="display: none;">Nome</span>
+          </label>
+          <input 
+            type="text" 
+            name="name" 
+            class="w-full px-5 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg" 
+            required
+          >
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2 font-medium">
+            <span data-lang="en">Email</span>
+            <span data-lang="pt" style="display: none;">Email</span>
+          </label>
+          <input 
+            type="email" 
+            name="email" 
+            class="w-full px-5 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg" 
+            required
+          >
+        </div>
+      </div>
 
-      <label>Email</label>
-      <input type="email" name="email" required />
+      <!-- Assunto -->
+      <div>
+        <label class="block text-gray-700 mb-2 font-medium">
+          <span data-lang="en">Subject</span>
+          <span data-lang="pt" style="display: none;">Assunto</span>
+        </label>
+        <input 
+          type="text" 
+          name="subject" 
+          class="w-full px-5 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg" 
+          required
+        >
+      </div>
 
-      <label>Mensagem</label>
-      <textarea name="message" rows="6" required></textarea>
+      <!-- Mensagem -->
+      <div>
+        <label class="block text-gray-700 mb-2 font-medium">
+          <span data-lang="en">Message</span>
+          <span data-lang="pt" style="display: none;">Mensagem</span>
+        </label>
+        <textarea 
+          name="message" 
+          rows="6" 
+          class="w-full px-5 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-lg" 
+          required
+        ></textarea>
+      </div>
 
-      <button type="submit">Enviar mensagem</button>
+      <!-- Botão -->
+      <button 
+        type="submit" 
+        id="submitBtn" 
+        class="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-xl transition-all shadow-xl hover:shadow-2xl flex items-center justify-center text-lg"
+      >
+        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+        </svg>
+        <span data-lang="en">Send Message</span>
+        <span data-lang="pt" style="display: none;">Enviar Mensagem</span>
+      </button>
+
+      <!-- Mensagem de sucesso -->
+      <div id="formStatus" class="hidden mt-4 p-4 rounded-xl bg-green-100 text-green-700 border border-green-200 text-center"></div>
     </form>
                     </div>
                 </div>
@@ -1432,6 +1501,258 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     
     <script>
+        // Dados de tradução
+        const translations = {
+            en: {
+                // Navigation
+                "Senior Engineer": "Senior Engineer",
+                "Home": "Home",
+                "Experience": "Experience",
+                "Expertise": "Expertise",
+                "Projects": "Projects",
+                "Education": "Education",
+                "Contact": "Contact",
+                
+                // Hero Section
+                "Senior Gas & Energy Systems Engineer": "Senior Gas & Energy Systems Engineer",
+                "CP Technician | Maintenance Electrical Artisan": "CP Technician | Maintenance Electrical Artisan",
+                "Specializing in gas pipeline operations, cathodic protection systems, and industrial electrical maintenance with 20+ years of experience in the energy sector.": "Specializing in gas pipeline operations, cathodic protection systems, and industrial electrical maintenance with 20+ years of experience in the energy sector.",
+                "Years Experience": "Years Experience",
+                "Projects Completed": "Projects Completed",
+                "Certifications": "Certifications",
+                "View Experience": "View Experience",
+                "Download CV": "Download CV",
+                "Current Role": "Current Role",
+                "Location": "Location",
+                "Specialization": "Specialization",
+                "Gas Pipeline Systems": "Gas Pipeline Systems",
+                "Senior Engineering Professional": "Senior Engineering Professional",
+                
+                // Experience Section
+                "Professional Experience": "Professional Experience",
+                "Two decades of progressive career growth in energy sector": "Two decades of progressive career growth in energy sector",
+                "Current Position": "Current Position",
+                "Maintenance Electrical Artisan": "Maintenance Electrical Artisan",
+                "Present": "Present",
+                "Gas supply operations for CTRG (175 MW) and Kuvaninga (40 MW) power plants": "Gas supply operations for CTRG (175 MW) and Kuvaninga (40 MW) power plants",
+                "Pressure reduction systems (120 bar → 6 bar)": "Pressure reduction systems (120 bar → 6 bar)",
+                "Cathodic protection records (MicroEye, DCVG, PCM)": "Cathodic protection records (MicroEye, DCVG, PCM)",
+                "Stray current mitigation and pipeline maintenance": "Stray current mitigation and pipeline maintenance",
+                "Electrical Artisan": "Electrical Artisan",
+                "Preventive maintenance": "Preventive maintenance",
+                "Pipeline Maintenance Operator": "Pipeline Maintenance Operator",
+                "Valve maintenance": "Valve maintenance",
+                "Cathodic protection": "Cathodic protection",
+                "Electrical Technician": "Electrical Technician",
+                "Plant maintenance": "Plant maintenance",
+                "Electrical systems": "Electrical systems",
+                "Industrial wiring": "Industrial wiring",
+                
+                // Expertise Section
+                "Technical Expertise": "Technical Expertise",
+                "Core competencies and specialized skills": "Core competencies and specialized skills",
+                "Electrical Systems": "Electrical Systems",
+                "Motor Maintenance": "Motor Maintenance",
+                "Fault Diagnosis": "Fault Diagnosis",
+                "Gas Operations": "Gas Operations",
+                "Pipeline Maintenance": "Pipeline Maintenance",
+                "Pressure Regulation": "Pressure Regulation",
+                "Valve Operations": "Valve Operations",
+                "Safety & Compliance": "Safety & Compliance",
+                "Emergency Procedures": "Emergency Procedures",
+                "Risk Assessment": "Risk Assessment",
+                "Lockout/Tagout": "Lockout/Tagout",
+                "Gas Testing": "Gas Testing",
+                "Fire Safety": "Fire Safety",
+                "Technical Skills": "Technical Skills",
+                "NDT Methods": "NDT Methods",
+                "ECDA Assessments": "ECDA Assessments",
+                "Project Supervision": "Project Supervision",
+                
+                // Projects Section
+                "Major Projects": "Major Projects",
+                "Key infrastructure projects and implementations": "Key infrastructure projects and implementations",
+                "Temane-Komatipoort Pigging Project": "Temane-Komatipoort Pigging Project",
+                "Technical Lead": "Technical Lead",
+                "Pipeline cleaning and inspection operations across international border": "Pipeline cleaning and inspection operations across international border",
+                "Safety Protocols": "Safety Protocols",
+                "International Standards": "International Standards",
+                "Infrastructure Project": "Infrastructure Project",
+                "Completed": "Completed",
+                "Ressano Garcia HPCMS & CTRG Construction": "Ressano Garcia HPCMS & CTRG Construction",
+                "Construction of gas supply infrastructure for 175 MW power plant": "Construction of gas supply infrastructure for 175 MW power plant",
+                "Control Systems": "Control Systems",
+                "Commissioning": "Commissioning",
+                "ROMPCO Loopline 1 Commissioning": "ROMPCO Loopline 1 Commissioning",
+                "Commissioning Engineer": "Commissioning Engineer",
+                "Commissioning of natural gas pipeline system": "Commissioning of natural gas pipeline system",
+                "Testing": "Testing",
+                "Documentation": "Documentation",
+                
+                // Education Section
+                "Education & Certifications": "Education & Certifications",
+                "Academic background and professional qualifications": "Academic background and professional qualifications",
+                "Education": "Education",
+                "Management of Renewable Energy": "Management of Renewable Energy",
+                "Degree": "Degree",
+                "Industrial Electrical Systems": "Industrial Electrical Systems",
+                "Medium Level": "Medium Level",
+                "Secondary Education": "Secondary Education",
+                "Basic Level": "Basic Level",
+                "Certifications": "Certifications",
+                "NDT Level II": "NDT Level II",
+                "ECDA Qualified": "ECDA Qualified",
+                "Gas Practitioner": "Gas Practitioner",
+                "Emergency Procedures": "Emergency Procedures",
+                
+                // Contact Section
+                "Get In Touch": "Get In Touch",
+                "Available for consulting and senior engineering opportunities": "Available for consulting and senior engineering opportunities",
+                "Send a Message": "Send a Message",
+                "Name": "Name",
+                "Email": "Email",
+                "Subject": "Subject",
+                "Message": "Message",
+                "Send Message": "Send Message",
+                "Contact Information": "Contact Information",
+                "Phone": "Phone",
+                "Availability": "Availability",
+                "Available for projects": "Available for projects",
+                "WhatsApp Quick Contact": "WhatsApp Quick Contact",
+                "Professional References": "Professional References",
+                
+                // Footer
+                "Senior Gas & Energy Engineer": "Senior Gas & Energy Engineer",
+                "Specializing in pipeline operations and industrial electrical systems": "Specializing in pipeline operations and industrial electrical systems",
+                "All rights reserved.": "All rights reserved.",
+                "Gas Practitioner Certified": "Gas Practitioner Certified"
+            },
+            pt: {
+                // Navigation
+                "Senior Engineer": "Engenheiro Sênior",
+                "Home": "Início",
+                "Experience": "Experiência",
+                "Expertise": "Competências",
+                "Projects": "Projetos",
+                "Education": "Formação",
+                "Contact": "Contacto",
+                
+                // Hero Section
+                "Senior Gas & Energy Systems Engineer": "Engenheiro Sênior de Sistemas de Gás & Energia",
+                "CP Technician | Maintenance Electrical Artisan": "Técnico de CP | Técnico de Manutenção Elétrica",
+                "Specializing in gas pipeline operations, cathodic protection systems, and industrial electrical maintenance with 20+ years of experience in the energy sector.": "Especialista em operações de gasodutos, sistemas de proteção catódica e manutenção elétrica industrial com mais de 20 anos de experiência no setor energético.",
+                "Years Experience": "Anos de Experiência",
+                "Projects Completed": "Projetos Concluídos",
+                "Certifications": "Certificações",
+                "View Experience": "Ver Experiência",
+                "Download CV": "Baixar CV",
+                "Current Role": "Posição Atual",
+                "Location": "Localização",
+                "Specialization": "Especialização",
+                "Gas Pipeline Systems": "Sistemas de Gasodutos",
+                "Senior Engineering Professional": "Profissional Sênior de Engenharia",
+                
+                // Experience Section
+                "Professional Experience": "Experiência Profissional",
+                "Two decades of progressive career growth in energy sector": "Duas décadas de crescimento progressivo no setor energético",
+                "Current Position": "Posição Atual",
+                "Maintenance Electrical Artisan": "Técnico de Manutenção Elétrica",
+                "Present": "Presente",
+                "Gas supply operations for CTRG (175 MW) and Kuvaninga (40 MW) power plants": "Operações de abastecimento de gás para centrais CTRG (175 MW) e Kuvaninga (40 MW)",
+                "Pressure reduction systems (120 bar → 6 bar)": "Sistemas de redução de pressão (120 bar → 6 bar)",
+                "Cathodic protection records (MicroEye, DCVG, PCM)": "Registos de proteção catódica (MicroEye, DCVG, PCM)",
+                "Stray current mitigation and pipeline maintenance": "Mitigação de correntes parasitas e manutenção de gasodutos",
+                "Electrical Artisan": "Técnico Elétrico",
+                "Preventive maintenance": "Manutenção preventiva",
+                "Pipeline Maintenance Operator": "Operador de Manutenção de Gasodutos",
+                "Valve maintenance": "Manutenção de válvulas",
+                "Cathodic protection": "Proteção catódica",
+                "Electrical Technician": "Técnico Elétrico",
+                "Plant maintenance": "Manutenção industrial",
+                "Electrical systems": "Sistemas elétricos",
+                "Industrial wiring": "Instalações",
+                
+                // Expertise Section
+                "Technical Expertise": "Competências Técnicas",
+                "Core competencies and specialized skills": "Competências principais e habilidades especializadas",
+                "Electrical Systems": "Sistemas Elétricos",
+                "Motor Maintenance": "Manutenção de Motores",
+                "Fault Diagnosis": "Diagnóstico de Falhas",
+                "Gas Operations": "Operações de Gás",
+                "Pipeline Maintenance": "Manutenção de Gasodutos",
+                "Pressure Regulation": "Regulação de Pressão",
+                "Valve Operations": "Operações de Válvulas",
+                "Safety & Compliance": "Segurança & Conformidade",
+                "Emergency Procedures": "Procedimentos de Emergência",
+                "Risk Assessment": "Avaliação de Riscos",
+                "Lockout/Tagout": "Bloqueio/Sinalização",
+                "Gas Testing": "Testes de Gás",
+                "Fire Safety": "Segurança Contra Incêndios",
+                "Technical Skills": "Competências Técnicas",
+                "NDT Methods": "Métodos END",
+                "ECDA Assessments": "Avaliações ECDA",
+                "Project Supervision": "Supervisão de Projetos",
+                
+                // Projects Section
+                "Major Projects": "Projetos Principais",
+                "Key infrastructure projects and implementations": "Principais projetos de infraestrutura e implementações",
+                "Temane-Komatipoort Pigging Project": "Projeto de Pigging Temane-Komatipoort",
+                "Technical Lead": "Líder Técnico",
+                "Pipeline cleaning and inspection operations across international border": "Operações de limpeza e inspeção de gasoduto através de fronteira internacional",
+                "Safety Protocols": "Protocolos de Segurança",
+                "International Standards": "Normas Internacionais",
+                "Infrastructure Project": "Projeto de Infraestrutura",
+                "Completed": "Concluído",
+                "Ressano Garcia HPCMS & CTRG Construction": "Construção HPCMS & CTRG Ressano Garcia",
+                "Construction of gas supply infrastructure for 175 MW power plant": "Construção de infraestrutura de abastecimento de gás para central de 175 MW",
+                "Control Systems": "Sistemas de Controlo",
+                "Commissioning": "Comissionamento",
+                "ROMPCO Loopline 1 Commissioning": "Comissionamento ROMPCO Loopline 1",
+                "Commissioning Engineer": "Engenheiro de Comissionamento",
+                "Commissioning of natural gas pipeline system": "Comissionamento do sistema de gasoduto de gás natural",
+                "Testing": "Testes",
+                "Documentation": "Documentação",
+                
+                // Education Section
+                "Education & Certifications": "Formação & Certificações",
+                "Academic background and professional qualifications": "Formação académica e qualificações profissionais",
+                "Education": "Formação",
+                "Management of Renewable Energy": "Gestão de Energias Renováveis",
+                "Degree": "Licenciatura",
+                "Industrial Electrical Systems": "Sistemas Elétricos Industriais",
+                "Medium Level": "Nível Médio",
+                "Secondary Education": "Ensino Secundário",
+                "Basic Level": "Nível Básico",
+                "Certifications": "Certificações",
+                "NDT Level II": "END Nível II",
+                "ECDA Qualified": "ECDA Qualificado",
+                "Gas Practitioner": "Praticante de Gás",
+                "Emergency Procedures": "Procedimentos de Emergência",
+                
+                // Contact Section
+                "Get In Touch": "Entre em Contacto",
+                "Available for consulting and senior engineering opportunities": "Disponível para consultoria e oportunidades de engenharia sênior",
+                "Send a Message": "Envie uma Mensagem",
+                "Name": "Nome",
+                "Email": "Email",
+                "Subject": "Assunto",
+                "Message": "Mensagem",
+                "Send Message": "Enviar Mensagem",
+                "Contact Information": "Informações de Contacto",
+                "Phone": "Telefone",
+                "Availability": "Disponibilidade",
+                "Available for projects": "Disponível para projetos",
+                "WhatsApp Quick Contact": "WhatsApp Contacto Rápido",
+                "Professional References": "Referências Profissionais",
+                
+                // Footer
+                "Senior Gas & Energy Engineer": "Engenheiro Sênior de Gás & Energia",
+                "Specializing in pipeline operations and industrial electrical systems": "Especialista em operações de gasodutos e sistemas elétricos industriais",
+                "All rights reserved.": "Todos os direitos reservados.",
+                "Gas Practitioner Certified": "Praticante de Gás Certificado"
+            }
+        };
+
         // Inicializar AOS
         document.addEventListener('DOMContentLoaded', function() {
             // Configurar AOS
@@ -1457,16 +1778,19 @@
 
             // Função para atualizar o texto baseado no idioma
             function updateLanguage() {
-                // Atualizar textos
+                // Atualizar todos os elementos com data-lang
                 const elements = document.querySelectorAll('[data-lang]');
                 elements.forEach(element => {
-                    const enText = element.getAttribute('data-lang-en') || element.textContent;
-                    const ptText = element.getAttribute('data-lang-pt') || element.textContent;
+                    const key = element.textContent.trim();
+                    if (translations[currentLanguage][key]) {
+                        element.textContent = translations[currentLanguage][key];
+                    }
                     
-                    if (currentLanguage === 'en') {
-                        element.textContent = enText;
-                    } else {
-                        element.textContent = ptText;
+                    // Mostrar/ocultar elementos baseado no idioma
+                    if (element.getAttribute('data-lang') === 'en') {
+                        element.style.display = currentLanguage === 'en' ? 'inline' : 'none';
+                    } else if (element.getAttribute('data-lang') === 'pt') {
+                        element.style.display = currentLanguage === 'pt' ? 'inline' : 'none';
                     }
                 });
 
@@ -1475,13 +1799,14 @@
                 document.getElementById('mobileLanguageText').textContent = currentLanguage === 'en' ? 'Português' : 'English';
                 document.getElementById('footerLanguageText').textContent = currentLanguage === 'en' ? 'Português' : 'English';
 
-                // Atualizar link do WhatsApp
+                // Atualizar link do WhatsApp com mensagem apropriada
                 const whatsappMessage = currentLanguage === 'en' 
                     ? 'Hello Luis, I saw your engineering portfolio and would like to discuss a professional opportunity.' 
                     : 'Olá Luis, vi o seu portfólio de engenharia e gostaria de discutir uma oportunidade profissional.';
                 
-                document.getElementById('whatsappBtn').href = `https://wa.me/258848654538?text=${encodeURIComponent(whatsappMessage)}`;
-                document.getElementById('whatsappFloat').href = `https://wa.me/258848654538?text=${encodeURIComponent(whatsappMessage)}`;
+                const whatsappLink = `https://wa.me/258848654538?text=${encodeURIComponent(whatsappMessage)}`;
+                document.getElementById('whatsappBtn').href = whatsappLink;
+                document.getElementById('whatsappFloat').href = whatsappLink;
             }
 
             // Função para navegar para uma seção
@@ -1521,7 +1846,7 @@
                 const mobileNavButtons = document.querySelectorAll('.mobile-nav-btn');
                 mobileNavButtons.forEach(btn => {
                     if (btn.getAttribute('data-section') === sectionId) {
-                        btn.classList.add('section-actiFve');
+                        btn.classList.add('section-active');
                         btn.classList.remove('text-gray-700', 'hover:text-blue-600', 'hover:bg-blue-50');
                     } else {
                         btn.classList.remove('section-active');
@@ -1585,16 +1910,18 @@
                 `;
                 submitBtn.disabled = true;
                 
-                // Simular envio (em produção, isso seria uma requisição real)
+                // Simular envio
                 setTimeout(() => {
                     // Resetar botão
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                     
                     // Mostrar mensagem de sucesso
-                    formStatus.textContent = currentLanguage === 'en' 
+                    const successMessage = currentLanguage === 'en' 
                         ? 'Thank you for your message. I will contact you soon.' 
                         : 'Obrigado pela sua mensagem. Entrarei em contacto em breve.';
+                    
+                    formStatus.textContent = successMessage;
                     formStatus.className = 'mb-6 p-4 rounded-xl bg-green-100 text-green-700 border border-green-200 form-submitted';
                     formStatus.classList.remove('hidden');
                     
